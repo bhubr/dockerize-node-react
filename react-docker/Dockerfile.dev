@@ -6,6 +6,9 @@ COPY yarn.lock .
 COPY tsconfig.json .
 RUN yarn install
 
+# Better pass -e REACT_APP_SERVER_URL=http://localhost:5000?
+# COPY .env.dev .env.development.local
+
 # https://github.com/facebook/create-react-app/issues/11897#issuecomment-1007206461
 ENV WDS_SOCKET_PORT 0
 CMD npm start

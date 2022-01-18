@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -p 3000:3000 --mount type=bind,source="$(pwd)"/src,target=/app/src,readonly --mount type=bind,source="$(pwd)"/public,target=/app/public,readonly -e CHOKIDAR_USEPOLLING=true benoithubert/react-docker-dev
+docker run -p 3000:3000 --mount type=bind,source="$(pwd)"/src,target=/app/src,readonly --mount type=bind,source="$(pwd)"/public,target=/app/public,readonly -e CHOKIDAR_USEPOLLING=true -e REACT_APP_SERVER_URL=http://localhost:5000 benoithubert/react-docker-dev
