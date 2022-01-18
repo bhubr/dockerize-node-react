@@ -5,6 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "nodemon --legacy-watch --exec ts-node --ext ts src/index",
+    "build": "tsc",
+    "start": "node dist/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
