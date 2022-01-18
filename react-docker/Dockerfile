@@ -19,9 +19,9 @@ RUN yarn install
 # # Build the app
 RUN yarn build
 
-# # 2nd step: copy build result to Nginx docroot and run
+# 2nd step: copy build result to Nginx docroot and run
 FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 COPY default.conf /etc/nginx/conf.d/
 
-# # No need for CMD: https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/
+# No need for CMD: https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/
