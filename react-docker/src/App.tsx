@@ -1,17 +1,36 @@
+import { useState, useEffect } from 'react';
+import { serverUrl } from './config';
+
 function App() {
+  const [message, setMessage] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<Error|null>(null);
+
+  useEffect(() => {
+    setLoading(true)
+    fetch(`${serverUrl}/message`)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`)
+        }
+        return res.json();
+      })
+      .then(data => setMessage(data.message))
+      .catch(err => setError(err))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <p>Server URL is: {process.env.REACT_APP_SERVER_URL}</p>
+      <h1>React App</h1>
+      <p>Server URL is: {serverUrl}</p>
+      {
+        loading
+          ? <p>Loading&hellip;</p>
+          : error
+          ? <p><strong>ERROR</strong>: {error.message}</p>
+          : <p>Received message from server: <em>{message}</em></p>
+      }
     </div>
   );
 }
