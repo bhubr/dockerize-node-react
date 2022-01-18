@@ -1,0 +1,8 @@
+.gitignore
+Dockerfile
+Dockerfile.dev
+README.md
+alive.js
+dev-build.sh
+dev-run.sh
+node_modules
