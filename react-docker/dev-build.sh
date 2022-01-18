@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t bhubr/react-docker-dev -f Dockerfile.dev .
+docker build -t benoithubert/react-docker-dev -f Dockerfile.dev .
