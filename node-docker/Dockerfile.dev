@@ -8,4 +8,5 @@ COPY tsconfig.json .
 
 RUN yarn install
 
-CMD yarn dev
+# Maybe better to use ts-node-dev after all
+CMD npx nodemon --legacy-watch --exec ts-node --ext ts src/index
