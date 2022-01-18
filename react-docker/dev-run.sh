@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -p 3005:3000 --mount type=bind,source="$(pwd)"/src,target=/app/src,readonly --mount type=bind,source="$(pwd)"/public,target=/app/public,readonly -e CHOKIDAR_USEPOLLING=true bhubr/react-docker-dev
