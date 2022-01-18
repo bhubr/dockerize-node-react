@@ -2,9 +2,9 @@ FROM node:lts-alpine
 
 WORKDIR /app
 COPY package.json .
-RUN npm i
-
+COPY yarn.lock .
 COPY tsconfig.json .
+RUN yarn install
 
 # https://github.com/facebook/create-react-app/issues/11897#issuecomment-1007206461
 ENV WDS_SOCKET_PORT 0
